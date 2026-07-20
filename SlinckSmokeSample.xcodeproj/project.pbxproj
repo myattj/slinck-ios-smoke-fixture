@@ -13,6 +13,15 @@
 		1A3000000000000000000004 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A2000000000000000000004 /* LaunchScreen.storyboard */; };
 		1A3000000000000000000005 /* SlinckSmokeSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2000000000000000000005 /* SlinckSmokeSampleTests.swift */; };
 		1A3000000000000000000006 /* SlinckSmokeSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2000000000000000000006 /* SlinckSmokeSampleUITests.swift */; };
+		1A3000000000000000000007 /* DemoMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2000000000000000000010 /* DemoMetrics.swift */; };
+		1A3000000000000000000008 /* DemoPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2000000000000000000011 /* DemoPalette.swift */; };
+		1A3000000000000000000009 /* DemoBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2000000000000000000012 /* DemoBackground.swift */; };
+		1A3000000000000000000010 /* DemoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2000000000000000000013 /* DemoHeaderView.swift */; };
+		1A3000000000000000000011 /* BuildHeroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2000000000000000000014 /* BuildHeroView.swift */; };
+		1A3000000000000000000012 /* BuildStatusCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2000000000000000000015 /* BuildStatusCard.swift */; };
+		1A3000000000000000000013 /* ReadyActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2000000000000000000016 /* ReadyActionView.swift */; };
+		1A3000000000000000000014 /* QualificationPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2000000000000000000017 /* QualificationPanel.swift */; };
+		1A3000000000000000000015 /* ConnectionPathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2000000000000000000018 /* ConnectionPathView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +51,15 @@
 		1A2000000000000000000007 /* SlinckSmokeSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlinckSmokeSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A2000000000000000000008 /* SlinckSmokeSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlinckSmokeSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A2000000000000000000009 /* SlinckSmokeSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlinckSmokeSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A2000000000000000000010 /* DemoMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoMetrics.swift; sourceTree = "<group>"; };
+		1A2000000000000000000011 /* DemoPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoPalette.swift; sourceTree = "<group>"; };
+		1A2000000000000000000012 /* DemoBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoBackground.swift; sourceTree = "<group>"; };
+		1A2000000000000000000013 /* DemoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoHeaderView.swift; sourceTree = "<group>"; };
+		1A2000000000000000000014 /* BuildHeroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildHeroView.swift; sourceTree = "<group>"; };
+		1A2000000000000000000015 /* BuildStatusCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildStatusCard.swift; sourceTree = "<group>"; };
+		1A2000000000000000000016 /* ReadyActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyActionView.swift; sourceTree = "<group>"; };
+		1A2000000000000000000017 /* QualificationPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QualificationPanel.swift; sourceTree = "<group>"; };
+		1A2000000000000000000018 /* ConnectionPathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionPathView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +112,15 @@
 			children = (
 				1A2000000000000000000001 /* SlinckSmokeSampleApp.swift */,
 				1A2000000000000000000002 /* ContentView.swift */,
+				1A2000000000000000000014 /* BuildHeroView.swift */,
+				1A2000000000000000000015 /* BuildStatusCard.swift */,
+				1A2000000000000000000018 /* ConnectionPathView.swift */,
+				1A2000000000000000000012 /* DemoBackground.swift */,
+				1A2000000000000000000013 /* DemoHeaderView.swift */,
+				1A2000000000000000000010 /* DemoMetrics.swift */,
+				1A2000000000000000000011 /* DemoPalette.swift */,
+				1A2000000000000000000017 /* QualificationPanel.swift */,
+				1A2000000000000000000016 /* ReadyActionView.swift */,
 				1A2000000000000000000003 /* SmokeStatus.swift */,
 				1A2000000000000000000004 /* LaunchScreen.storyboard */,
 			);
@@ -247,6 +274,15 @@
 			files = (
 				1A3000000000000000000001 /* SlinckSmokeSampleApp.swift in Sources */,
 				1A3000000000000000000002 /* ContentView.swift in Sources */,
+				1A3000000000000000000011 /* BuildHeroView.swift in Sources */,
+				1A3000000000000000000012 /* BuildStatusCard.swift in Sources */,
+				1A3000000000000000000015 /* ConnectionPathView.swift in Sources */,
+				1A3000000000000000000009 /* DemoBackground.swift in Sources */,
+				1A3000000000000000000010 /* DemoHeaderView.swift in Sources */,
+				1A3000000000000000000007 /* DemoMetrics.swift in Sources */,
+				1A3000000000000000000008 /* DemoPalette.swift in Sources */,
+				1A3000000000000000000014 /* QualificationPanel.swift in Sources */,
+				1A3000000000000000000013 /* ReadyActionView.swift in Sources */,
 				1A3000000000000000000003 /* SmokeStatus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
