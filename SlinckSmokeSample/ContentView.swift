@@ -1,55 +1,26 @@
 import SwiftUI
 
 struct ContentView: View {
-    private let status = SmokeStatus.sample
-    @State private var qualificationInput = ""
-    @State private var isRecordingReady = false
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
-
     var body: some View {
-        ZStack {
-            DemoBackground()
+        VStack(spacing: 16) {
+            Image(systemName: "iphone")
+                .font(.system(size: 56, weight: .medium))
+                .foregroundStyle(.blue)
 
-            ScrollView {
-                VStack(alignment: .leading, spacing: DemoMetrics.sectionSpacing) {
-                    DemoHeaderView()
-                    BuildHeroView(status: status)
-                    BuildStatusCard(status: status)
-                    ReadyActionView(
-                        isReady: isRecordingReady,
-                        action: markRecordingReady
-                    )
-                    QualificationPanel(input: $qualificationInput)
-                }
-                .frame(maxWidth: DemoMetrics.contentMaxWidth, alignment: .leading)
-                .padding(.horizontal, DemoMetrics.pageInset)
-                .padding(.vertical, DemoMetrics.pageInset)
-                .frame(maxWidth: .infinity)
-            }
-            .scrollIndicators(.hidden)
-            .accessibilityIdentifier("qualification.scroll")
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .tint(DemoPalette.accent)
-    }
+            Text("Hello, iOS")
+                .font(.largeTitle.bold())
+                .accessibilityIdentifier("smoke.title")
 
-    private func markRecordingReady() {
-        if reduceMotion {
-            isRecordingReady.toggle()
-        } else {
-            withAnimation(.easeInOut(duration: 0.2)) {
-                isRecordingReady.toggle()
-            }
+            Text("Edit this screen, then run it remotely.")
+                .font(.body)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+                .accessibilityIdentifier("smoke.subtitle")
         }
+        .padding(32)
     }
 }
 
-#Preview("Light") {
+#Preview {
     ContentView()
-        .preferredColorScheme(.light)
-}
-
-#Preview("Dark") {
-    ContentView()
-        .preferredColorScheme(.dark)
 }
