@@ -1,23 +1,58 @@
 import SwiftUI
 
 struct ContentView: View {
+    private let status = SmokeStatus.sample
+    @State private var qualificationInput = ""
+
     var body: some View {
-        VStack(spacing: 16) {
-            Image(systemName: "iphone")
-                .font(.system(size: 56, weight: .medium))
-                .foregroundStyle(.blue)
+        ScrollView {
+            VStack(alignment: .leading, spacing: 18) {
+                HStack {
+                    Image(systemName: "checkmark.circle.fill")
+                        .foregroundStyle(.green)
+                        .accessibilityHidden(true)
 
-            Text("Hello, iOS")
+                    Text(status.title)
+                        .accessibilityIdentifier("smoke.title")
+                }
                 .font(.largeTitle.bold())
-                .accessibilityIdentifier("smoke.title")
 
-            Text("Edit this screen, then run it remotely.")
-                .font(.body)
-                .foregroundStyle(.secondary)
-                .multilineTextAlignment(.center)
-                .accessibilityIdentifier("smoke.subtitle")
+                Text("Ready for a governed Slinck build")
+                    .font(.headline)
+                    .foregroundStyle(.secondary)
+                    .accessibilityIdentifier("smoke.subtitle")
+
+                VStack(alignment: .leading, spacing: 10) {
+                    Text(status.buildLabel)
+                        .font(.title3.bold())
+                        .accessibilityIdentifier("smoke.status.build")
+
+                    Text(status.artifactLabel)
+                        .foregroundStyle(.secondary)
+                        .accessibilityIdentifier("smoke.status.artifacts")
+                }
+                .padding()
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(.quaternary, in: RoundedRectangle(cornerRadius: 12))
+
+                Button("Ready", systemImage: "checkmark", action: {})
+                    .buttonStyle(.borderedProminent)
+                    .accessibilityIdentifier("smoke.ready.button")
+
+                TextField("Qualification input", text: $qualificationInput)
+                    .textFieldStyle(.roundedBorder)
+                    .accessibilityIdentifier("qualification.input")
+
+                ForEach(1...20, id: \.self) { row in
+                    Text("Qualification row \(row)")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding()
         }
-        .padding(32)
+        .accessibilityElement(children: .contain)
+        .accessibilityIdentifier("qualification.scroll")
     }
 }
 
