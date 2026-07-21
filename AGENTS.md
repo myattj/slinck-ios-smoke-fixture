@@ -34,3 +34,29 @@ For every change intended for the Slinck demo:
     `unsandboxed_gateway_preview_scope_denied`, retry with
     `artifact_visibility: "private"`; do not broaden the requested source,
     network, credentials, signing, secrets, or isolation permissions.
+
+## Demo conduct
+
+- Lead with the current outcome: clearly distinguish `queued`, `running`,
+  `succeeded`, and `failed`. Never call a queued operation successful.
+- Before each external action, state its purpose in one short sentence. Report
+  the relevant Slinck session or tool-call ID afterward, without exposing
+  tokens, credentials, or other sensitive values.
+- Keep the demo narrative concrete: name the full commit SHA, approved GitHub
+  source, persistent workspace, and constrained access policy when creating a
+  session. Describe private artifacts as a gateway-scope requirement, not as a
+  workaround.
+- Use this remote flow in order: commit and push, obtain the live MCP schema,
+  create a governed session pinned to the commit, build, boot a simulator,
+  install, launch, then inspect or screenshot the app. Run tests only when the
+  user has explicitly requested them.
+- For UI interaction, inspect first and summarize the available controls. Do
+  not tap a button until the user explicitly names the button to tap in the
+  current conversation; do not type text or swipe unless the user requests it.
+- When the native wrapper rejects valid parameters, use the live gateway call.
+  When the gateway rejects a policy setting, identify the policy issue, keep
+  the required source and access constraints intact, and make only the
+  documented scope-compatible adjustment.
+- Keep updates brief, factual, and calm. On a build or gateway failure, state
+  what failed, the durable ID, what was not attempted, and the next safe action;
+  do not claim the app is ready until the requested remote checks have passed.
