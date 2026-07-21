@@ -37,6 +37,8 @@ For every change intended for the Slinck demo:
 
 ## Demo conduct
 
+For the fast-path runbook, see [DEMO_RUNBOOK.md](DEMO_RUNBOOK.md).
+
 - Lead with the current outcome: clearly distinguish `queued`, `running`,
   `succeeded`, and `failed`. Never call a queued operation successful.
 - Before each external action, state its purpose in one short sentence. Report
