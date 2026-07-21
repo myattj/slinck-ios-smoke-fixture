@@ -11,9 +11,10 @@ final class SlinckSmokeSampleUITests: XCTestCase {
 
         XCTAssertTrue(app.staticTexts["smoke.title"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.staticTexts["smoke.subtitle"].exists)
+        XCTAssertTrue(app.staticTexts["smoke.remote.message"].exists)
         XCTAssertTrue(app.staticTexts["smoke.status.build"].exists)
         XCTAssertTrue(app.staticTexts["smoke.status.artifacts"].exists)
-        XCTAssertTrue(app.buttons["smoke.ready.button"].exists)
+        XCTAssertTrue(app.buttons["smoke.build-status.button"].exists)
         XCTAssertTrue(app.textFields["qualification.input"].exists)
         XCTAssertTrue(app.scrollViews["qualification.scroll"].exists)
     }
