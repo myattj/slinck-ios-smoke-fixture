@@ -36,8 +36,6 @@ Stable accessibility identifiers on the first screen:
 - `smoke.status.build`
 - `smoke.status.artifacts`
 - `smoke.ready.button`
-- `smoke.validation.message`
-- `smoke.validation.button`
 - `qualification.input`
 - `qualification.scroll`
 
