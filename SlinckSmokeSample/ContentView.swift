@@ -39,7 +39,7 @@ struct ContentView: View {
                     .buttonStyle(.borderedProminent)
                     .accessibilityIdentifier("smoke.ready.button")
 
-                Text("Remote controls are ready for the Slinck demo.")
+                Text("One-call remote loop — built and launched by Claude.")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                     .accessibilityIdentifier("smoke.remote.label")
