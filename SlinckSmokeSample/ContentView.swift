@@ -3,6 +3,7 @@ import SwiftUI
 struct ContentView: View {
     private let status = SmokeStatus.sample
     @State private var qualificationInput = ""
+    @State private var isRemoteValidationQueued = false
 
     var body: some View {
         ScrollView {
@@ -38,6 +39,25 @@ struct ContentView: View {
                 Button("Ready", systemImage: "checkmark", action: {})
                     .buttonStyle(.borderedProminent)
                     .accessibilityIdentifier("smoke.ready.button")
+
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Remote validation will build the app, run XCTest, and verify its launch screen.")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .accessibilityIdentifier("smoke.validation.message")
+
+                    Button(
+                        isRemoteValidationQueued ? "Validation queued" : "Queue remote validation",
+                        systemImage: "cloud.fill"
+                    ) {
+                        isRemoteValidationQueued = true
+                    }
+                    .buttonStyle(.bordered)
+                    .accessibilityIdentifier("smoke.validation.button")
+                }
+                .padding()
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(.quaternary, in: RoundedRectangle(cornerRadius: 12))
 
                 TextField("Qualification input", text: $qualificationInput)
                     .textFieldStyle(.roundedBorder)
