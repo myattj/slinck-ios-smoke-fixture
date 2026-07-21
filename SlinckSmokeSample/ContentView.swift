@@ -22,10 +22,6 @@ struct ContentView: View {
                     .foregroundStyle(.secondary)
                     .accessibilityIdentifier("smoke.subtitle")
 
-                Text("This sample is ready to build and test remotely through Slinck.")
-                    .foregroundStyle(.secondary)
-                    .accessibilityIdentifier("smoke.remote.message")
-
                 VStack(alignment: .leading, spacing: 10) {
                     Text(status.buildLabel)
                         .font(.title3.bold())
@@ -39,9 +35,9 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .background(.quaternary, in: RoundedRectangle(cornerRadius: 12))
 
-                Button("View build status", systemImage: "arrow.triangle.2.circlepath", action: {})
+                Button("Ready", systemImage: "checkmark", action: {})
                     .buttonStyle(.borderedProminent)
-                    .accessibilityIdentifier("smoke.build-status.button")
+                    .accessibilityIdentifier("smoke.ready.button")
 
                 TextField("Qualification input", text: $qualificationInput)
                     .textFieldStyle(.roundedBorder)
