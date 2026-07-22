@@ -21,7 +21,7 @@ struct ContentView: View {
                     }
                 }
 
-            Text("Built on AWS")
+            Text("Shipped from Slinck")
                 .font(.largeTitle.bold())
                 .accessibilityIdentifier("smoke.title")
 
