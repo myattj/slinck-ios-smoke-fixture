@@ -4,6 +4,7 @@ struct ContentView: View {
     private let status = SmokeStatus.sample
     @State private var qualificationInput = ""
     @State private var isBuildNoteVisible = false
+    @State private var confirmCount = 0
 
     var body: some View {
         ScrollView {
@@ -47,6 +48,26 @@ struct ContentView: View {
                 .background(.blue.quaternary, in: RoundedRectangle(cornerRadius: 12))
 
                 VStack(alignment: .leading, spacing: 10) {
+                    Text("Live from the remote simulator")
+                        .font(.title3.bold())
+
+                    Button("Tap to confirm", systemImage: "hand.tap", action: confirm)
+                        .buttonStyle(.borderedProminent)
+                        .controlSize(.large)
+                        .accessibilityIdentifier("smoke.confirm.button")
+
+                    Text(confirmCount == 0
+                        ? "Not confirmed yet"
+                        : "Confirmed \(confirmCount) time\(confirmCount == 1 ? "" : "s")")
+                        .font(.headline)
+                        .foregroundStyle(confirmCount == 0 ? .secondary : .green)
+                        .accessibilityIdentifier("smoke.confirm.text")
+                }
+                .padding()
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(.green.quaternary, in: RoundedRectangle(cornerRadius: 12))
+
+                VStack(alignment: .leading, spacing: 10) {
                     Text(status.buildLabel)
                         .font(.title3.bold())
                         .accessibilityIdentifier("smoke.status.build")
@@ -81,6 +102,10 @@ struct ContentView: View {
 
     private func toggleBuildNote() {
         isBuildNoteVisible.toggle()
+    }
+
+    private func confirm() {
+        confirmCount += 1
     }
 }
 
