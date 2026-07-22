@@ -60,7 +60,7 @@ struct ContentView: View {
                         ? "Not confirmed yet"
                         : "Confirmed \(confirmCount) time\(confirmCount == 1 ? "" : "s")")
                         .font(.headline)
-                        .foregroundStyle(confirmCount == 0 ? .secondary : .green)
+                        .foregroundStyle(confirmCount == 0 ? Color.secondary : Color.green)
                         .accessibilityIdentifier("smoke.confirm.text")
                 }
                 .padding()
