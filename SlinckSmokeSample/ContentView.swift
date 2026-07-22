@@ -24,10 +24,15 @@ struct ContentView: View {
                 .font(.largeTitle.bold())
                 .accessibilityIdentifier("smoke.title")
 
-            Text("Claude → Slinck → AWS Mac")
+            Text("Remote build verified")
                 .font(.headline)
                 .foregroundStyle(.secondary)
                 .accessibilityIdentifier("smoke.subtitle")
+
+            Text("run 2")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+                .accessibilityIdentifier("smoke.caption")
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
