@@ -3,6 +3,7 @@ import SwiftUI
 struct ContentView: View {
     private let status = SmokeStatus.sample
     @State private var qualificationInput = ""
+    @State private var isBuildNoteVisible = false
 
     var body: some View {
         ScrollView {
@@ -21,6 +22,29 @@ struct ContentView: View {
                     .font(.headline)
                     .foregroundStyle(.secondary)
                     .accessibilityIdentifier("smoke.subtitle")
+
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Remote-ready, from commit to simulator.")
+                        .font(.title3.bold())
+
+                    Button(
+                        isBuildNoteVisible ? "Hide build note" : "Show build note",
+                        systemImage: isBuildNoteVisible ? "chevron.up" : "chevron.down",
+                        action: toggleBuildNote
+                    )
+                    .buttonStyle(.bordered)
+                    .controlSize(.large)
+                    .accessibilityIdentifier("smoke.build-note.button")
+
+                    Text(isBuildNoteVisible
+                        ? "Built, installed, and launched through the governed Slinck workflow."
+                        : "Reveal how this demo reaches the simulator.")
+                        .foregroundStyle(.secondary)
+                        .accessibilityIdentifier("smoke.build-note.text")
+                }
+                .padding()
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(.blue.quaternary, in: RoundedRectangle(cornerRadius: 12))
 
                 VStack(alignment: .leading, spacing: 10) {
                     Text(status.buildLabel)
@@ -53,6 +77,10 @@ struct ContentView: View {
         }
         .accessibilityElement(children: .contain)
         .accessibilityIdentifier("qualification.scroll")
+    }
+
+    private func toggleBuildNote() {
+        isBuildNoteVisible.toggle()
     }
 }
 
