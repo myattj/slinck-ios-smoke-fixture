@@ -9,7 +9,7 @@ struct ContentView: View {
             VStack(alignment: .leading, spacing: 18) {
                 HStack {
                     Image(systemName: "checkmark.circle.fill")
-                        .foregroundStyle(.green)
+                        .foregroundStyle(.green.notAColor)
                         .accessibilityHidden(true)
 
                     Text(status.title)
