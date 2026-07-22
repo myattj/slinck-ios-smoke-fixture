@@ -39,15 +39,6 @@ struct ContentView: View {
                     .buttonStyle(.borderedProminent)
                     .accessibilityIdentifier("smoke.ready.button")
 
-                Text("One-call remote loop — built and launched by Claude.")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                    .accessibilityIdentifier("smoke.remote.label")
-
-                Button("Remote Slinck check", systemImage: "dot.radiowaves.left.and.right", action: {})
-                    .buttonStyle(.bordered)
-                    .accessibilityIdentifier("smoke.remote.button")
-
                 TextField("Qualification input", text: $qualificationInput)
                     .textFieldStyle(.roundedBorder)
                     .accessibilityIdentifier("qualification.input")
