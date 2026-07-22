@@ -3,6 +3,7 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var isPulsing = false
+    @State private var isConfirmed = false
 
     var body: some View {
         VStack(spacing: 16) {
@@ -24,15 +25,19 @@ struct ContentView: View {
                 .font(.largeTitle.bold())
                 .accessibilityIdentifier("smoke.title")
 
-            Text("Remote build verified")
+            Text(isConfirmed ? "Confirmed by agent" : "Remote build verified")
                 .font(.headline)
                 .foregroundStyle(.secondary)
                 .accessibilityIdentifier("smoke.subtitle")
 
-            Text("run 2")
-                .font(.caption)
-                .foregroundStyle(.secondary)
-                .accessibilityIdentifier("smoke.caption")
+            // The one control on this screen. A remote agent can find it by
+            // ref, tap it, and prove it drove the app by re-reading the label
+            // above — which a screenshot alone can never establish.
+            Button("Confirm") {
+                isConfirmed = true
+            }
+            .buttonStyle(.borderedProminent)
+            .accessibilityIdentifier("smoke.confirm")
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
