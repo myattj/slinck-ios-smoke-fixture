@@ -3,7 +3,6 @@ import SwiftUI
 struct ContentView: View {
     private let status = SmokeStatus.sample
     @State private var qualificationInput = ""
-    @State private var demoPingCount = 0
 
     var body: some View {
         ScrollView {
@@ -40,18 +39,6 @@ struct ContentView: View {
                     .buttonStyle(.borderedProminent)
                     .accessibilityIdentifier("smoke.ready.button")
 
-                Text("Remote interaction ready")
-                    .font(.headline)
-                    .accessibilityIdentifier("demo.ping.title")
-
-                Button("Send Demo Ping", systemImage: "paperplane", action: sendDemoPing)
-                    .buttonStyle(.bordered)
-                    .accessibilityIdentifier("demo.ping.button")
-
-                Text(demoPingStatus)
-                    .foregroundStyle(.secondary)
-                    .accessibilityIdentifier("demo.ping.status")
-
                 TextField("Qualification input", text: $qualificationInput)
                     .textFieldStyle(.roundedBorder)
                     .accessibilityIdentifier("qualification.input")
@@ -66,14 +53,6 @@ struct ContentView: View {
         }
         .accessibilityElement(children: .contain)
         .accessibilityIdentifier("qualification.scroll")
-    }
-
-    private var demoPingStatus: String {
-        demoPingCount == 0 ? "No pings sent" : "Pings sent: \(demoPingCount)"
-    }
-
-    private func sendDemoPing() {
-        demoPingCount += 1
     }
 }
 
