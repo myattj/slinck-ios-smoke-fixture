@@ -1,58 +1,85 @@
 import SwiftUI
 
+/// The qualification surface. This branch exists so the tool coverage the demo
+/// path cannot reach — type_text needs a text field, swipe needs something that
+/// scrolls — is exercised against a real app rather than left unproven. The
+/// demo branch keeps its plain success screen; this one carries the controls.
 struct ContentView: View {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var isPulsing = false
+    @State private var isConfirmed = false
+    @State private var noteText = ""
+
     private let status = SmokeStatus.sample
-    @State private var qualificationInput = ""
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 18) {
-                HStack {
-                    Image(systemName: "checkmark.circle.fill")
-                        .foregroundStyle(.green)
-                        .accessibilityHidden(true)
-
-                    Text(status.title)
-                        .accessibilityIdentifier("smoke.title")
+        VStack(spacing: 16) {
+            Image(systemName: "checkmark.circle.fill")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 72, height: 72)
+                .foregroundStyle(.green)
+                .scaleEffect(isPulsing ? 1.08 : 1.0)
+                .accessibilityHidden(true)
+                .onAppear {
+                    guard !reduceMotion else { return }
+                    withAnimation(.easeInOut(duration: 1.1).repeatForever(autoreverses: true)) {
+                        isPulsing = true
+                    }
                 }
-                .font(.largeTitle.bold())
 
-                Text("Ready for a governed Slinck build")
-                    .font(.headline)
-                    .foregroundStyle(.secondary)
-                    .accessibilityIdentifier("smoke.subtitle")
+            Text("Shipped from Slinck")
+                .font(.title.bold())
+                .accessibilityIdentifier("smoke.title")
 
-                VStack(alignment: .leading, spacing: 10) {
-                    Text(status.buildLabel)
-                        .font(.title3.bold())
-                        .accessibilityIdentifier("smoke.status.build")
+            Text(isConfirmed ? "Confirmed by agent" : "Remote build verified")
+                .font(.headline)
+                .foregroundStyle(.secondary)
+                .accessibilityIdentifier("smoke.subtitle")
 
-                    Text(status.artifactLabel)
-                        .foregroundStyle(.secondary)
-                        .accessibilityIdentifier("smoke.status.artifacts")
-                }
-                .padding()
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .background(.quaternary, in: RoundedRectangle(cornerRadius: 12))
-
-                Button("Ready", systemImage: "checkmark", action: {})
-                    .buttonStyle(.borderedProminent)
-                    .accessibilityIdentifier("smoke.ready.button")
-
-                TextField("Qualification input", text: $qualificationInput)
-                    .textFieldStyle(.roundedBorder)
-                    .accessibilityIdentifier("qualification.input")
-
-                ForEach(1...20, id: \.self) { row in
-                    Text("Qualification row \(row)")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
+            Button("Confirm") {
+                isConfirmed = true
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding()
+            .buttonStyle(.borderedProminent)
+            .accessibilityIdentifier("smoke.confirm")
+
+            // A field a remote agent can type into, and enough rows below it
+            // that the scroll view actually scrolls on an iPhone screen — a
+            // swipe against content that already fits proves nothing.
+            TextField("Note", text: $noteText)
+                .textFieldStyle(.roundedBorder)
+                .autocorrectionDisabled()
+                .textInputAutocapitalization(.never)
+                .accessibilityIdentifier("qualification.input")
+
+            Text(noteText.isEmpty ? "No note" : noteText)
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+                .accessibilityIdentifier("qualification.note.echo")
+
+            ScrollView {
+                VStack(alignment: .leading, spacing: 12) {
+                    Text(status.buildLabel)
+                        .accessibilityIdentifier("smoke.status.build")
+                    Text(status.artifactLabel)
+                        .accessibilityIdentifier("smoke.status.artifacts")
+                    ForEach(1...30, id: \.self) { index in
+                        Text("Qualification row \(index)")
+                            .accessibilityIdentifier("qualification.row.\(index)")
+                    }
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 4)
+            }
+            .accessibilityIdentifier("qualification.scroll")
+
+            Button("Ready") {
+                isConfirmed = true
+            }
+            .accessibilityIdentifier("smoke.ready.button")
         }
-        .accessibilityElement(children: .contain)
-        .accessibilityIdentifier("qualification.scroll")
+        .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
