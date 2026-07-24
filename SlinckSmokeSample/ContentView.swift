@@ -4,6 +4,7 @@ struct ContentView: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var isPulsing = false
     @State private var isConfirmed = false
+    @State private var noteText = ""
 
     var body: some View {
         VStack(spacing: 16) {
@@ -29,6 +30,16 @@ struct ContentView: View {
                 .font(.headline)
                 .foregroundStyle(.secondary)
                 .accessibilityIdentifier("smoke.subtitle")
+
+            Text("Running remotely via Slinck")
+                .font(.subheadline)
+                .foregroundStyle(.tertiary)
+                .accessibilityIdentifier("smoke.remoteLabel")
+
+            TextField("Type something…", text: $noteText)
+                .textFieldStyle(.roundedBorder)
+                .frame(maxWidth: 260)
+                .accessibilityIdentifier("smoke.textField")
 
             // The one control on this screen. A remote agent can find it by
             // ref, tap it, and prove it drove the app by re-reading the label
